@@ -21,5 +21,36 @@
     height:500px;
     padding-top:100px;
 }
+.custom-product{
+    padding-top:100px;
+
+    height:600px;
+}
+.carousel-text-bg{
+    background: #8b88a2cf;
+}
+.trending-heading{
+    margin:10px;
+}
+.trending-wrapper{
+    display: inline-block;
+    width: 23%;
+    margin: 10px;
+}
+.trending-image{
+    height: 250px;
+    width: 100%;
+}
+.trending-title{
+    font-weight: bold;
+    color: darkred;
+    text-align: center;
+    font-size: 20px;
+    margin: 10px;
+}
+.product-img{
+    height: 300px;
+    margin: 20px 10px;
+}
 </style>
 </html>
