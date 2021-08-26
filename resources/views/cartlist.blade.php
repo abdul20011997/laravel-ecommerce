@@ -41,7 +41,7 @@ for($i=0;$i<count($data);$i++){
       <td></td>
       <td>Total</td>
       <td>{{$totalamount}}</td>
-      <td></td>
+      <td><a href="/checkout" class="btn btn-success">Proceed to Checkout</a></td>
    </tr>
   </tbody>
 </table>

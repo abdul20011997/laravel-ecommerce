@@ -31,4 +31,5 @@ Route::get('logout',function(){
 });
 Route::get('cartlist',[ProductController::class,'cartList']);
 Route::get('cartdelete/{id}',[ProductController::class,'cartDelete']);
-
+Route::get('checkout',[ProductController::class,'checkout']);
+Route::post('order',[ProductController::class,'order']);
