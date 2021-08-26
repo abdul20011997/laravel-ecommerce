@@ -24,3 +24,11 @@ Route::get('/login',function(){
 Route::post('login',[LoginController::class,'index']);
 Route::get('/productdetail/{id}',[ProductController::class,'getProduct']);
 Route::post('search',[ProductController::class,'search']);
+Route::post('addtocart',[ProductController::class,'addToCart']);
+Route::get('logout',function(){
+    Session::forget('user');
+    return redirect('/login');
+});
+Route::get('cartlist',[ProductController::class,'cartList']);
+Route::get('cartdelete/{id}',[ProductController::class,'cartDelete']);
+
