@@ -20,4 +20,12 @@ class LoginController extends Controller
         return redirect('/');
        }
     }
+    function register(Request $req){
+        $user=New User;
+        $user->name=$req->input('name');
+        $user->email=$req->input('email');
+        $user->password=Hash::make($req->input('password'));
+        $user->save();
+        return redirect('/login');
+    }
 }

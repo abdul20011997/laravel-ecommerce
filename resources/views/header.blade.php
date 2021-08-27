@@ -17,7 +17,7 @@ if(Session::has('user')){
         <a class="nav-link" href="/">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Orders</a>
+        <a class="nav-link" href="/orders">Orders</a>
       </li>
       
       <form class="form-inline my-2 my-lg-0" action="search" method="POST">
@@ -41,7 +41,8 @@ if(Session::has('user')){
     </li>
     @else
     <li class="nav-item" style="list-style-type: none;">
-        <a class="nav-link" href="/login">Login</a>
+        <a class="nav-link1" href="/login">Login</a>
+        <a class="nav-link1" href="/register">Register</a>
     </li>
     @endif
 

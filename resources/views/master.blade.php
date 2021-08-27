@@ -52,5 +52,9 @@
     height: 300px;
     margin: 20px 10px;
 }
+.nav-link1 {
+    display: inline-block;
+    padding: .5rem 1rem;
+}
 </style>
 </html>

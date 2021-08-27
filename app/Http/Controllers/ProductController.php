@@ -82,13 +82,19 @@ class ProductController extends Controller
         // return $req->input();
         $userid=$req->session()->get('user')['id'];
         $cartdata=Cart::where('user_id','=',$userid)->get();
-        $totalamount=DB::table('cart')->join('products','products.id','=','cart.product_id')->where('cart.user_id','=',$userid)->sum('products.price');
+        $totaldata=DB::table('cart')->join('products','products.id','=','cart.product_id')->where('cart.user_id','=',$userid)->select('products.price As Price','cart.quantity As Quantity')->get();
+        $totalamount=0;
+        for($i=0;$i<count($totaldata);$i++){
+            $totalamount1=$totaldata[$i]->Price * $totaldata[$i]->Quantity;
+            $totalamount=$totalamount+$totalamount1;
+        }
         $order=New Order;
         $order->user_id=$userid;
         $order->status='Pending';
         $order->paymenttype=$req->paymenttype;
         $order->paymentstatus='Pending';
         $order->address=$req->address;
+        $order->amount=$totalamount;
         $order->save();
         $orderId=$order->id;
         for($i=0;$i<count($cartdata);$i++){
@@ -101,6 +107,25 @@ class ProductController extends Controller
         Cart::where('user_id','=',$userid)->delete();
         return redirect('/');
 
+    }
+    function orders(){
+        // return view('orders');
+        $userid=Session::get('user')['id'];
+        // $totaldata=DB::table('orders')->join('order_details','order_details.order_id','=','orders.id')->join('products','products.id','=','order_details.product_id')->where('orders.user_id','=',$userid)->get();
+        // $totalamount=0;
+        // for($i=0;$i<count($totaldata);$i++){
+        //     $totalamount1=$totaldata[$i]->Price * $totaldata[$i]->Quantity;
+        //     $totalamount=$totalamount+$totalamount1;
+        // }
+        $orderdata=DB::table('orders')->where('user_id','=',$userid)->get();
+        return view('orders',['orderdata'=>$orderdata]);
+    }
+    function orderdetail($id){
+        $OrderId=$id;
+        $userid=Session::get('user')['id'];
+        $totaldata=DB::table('orders')->join('order_details','order_details.order_id','=','orders.id')->join('products','products.id','=','order_details.product_id')->where('orders.user_id','=',$userid)->where('orders.id','=',$OrderId)->get();
+        return view('orderdetail',['totaldata'=>$totaldata]);
+        // return $totaldata;
     }
 
 }

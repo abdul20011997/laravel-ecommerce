@@ -33,3 +33,7 @@ Route::get('cartlist',[ProductController::class,'cartList']);
 Route::get('cartdelete/{id}',[ProductController::class,'cartDelete']);
 Route::get('checkout',[ProductController::class,'checkout']);
 Route::post('order',[ProductController::class,'order']);
+Route::view('register','register');
+Route::post('register',[LoginController::class,'register']);
+Route::get('orders',[ProductController::class,'orders']);
+Route::get('orderdetail/{id}',[ProductController::class,'orderdetail']);
